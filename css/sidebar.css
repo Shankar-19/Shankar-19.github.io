@@ -1,0 +1,27 @@
+#sidebar {
+	width: 20%;
+	height: 100vh;
+	border-right: 2px solid #F1F1F1;
+}
+
+#bar {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+}
+
+@media (max-width: 480px) {
+	main {
+		display: block;
+		position: relative;
+	}
+
+	#sidebar {
+		position: absolute;
+		width: 100%;
+		top: 0;
+		left: 0;
+		border: none;
+		background-color: tomato;
+	}
+}
