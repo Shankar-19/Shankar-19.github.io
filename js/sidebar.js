@@ -20,4 +20,69 @@ export default class SideBar {
 		});
 	}
 
+	static setImage(bgImage, profilePic, fileUpload) {
+
+		// set the background image on load
+		let str = localStorage.getItem("bgImage");
+		if(str) {
+			bgImage.style.backgroundImage = `url(${str})`;
+		}
+
+		// set the profile picture on load
+		str = localStorage.getItem("profilePic");
+		if(str) {
+			profilePic.style.backgroundImage = `url(${str})`;
+		}
+
+		let image = "";
+
+		bgImage.addEventListener("click", function() {
+			fileUpload.click();
+			image = "background"
+		})
+
+		profilePic.addEventListener("click", function() {
+			fileUpload.click();
+			image = "profile"
+		});
+
+		fileUpload.addEventListener("change", function() {
+			const reader = new FileReader();
+			reader.readAsDataURL(fileUpload.files[0]);
+
+			reader.addEventListener("load", function() {
+				if(image == "background") {
+					bgImage.style.backgroundImage = `url(${reader.result})`;
+					localStorage.setItem("bgImage", reader.result);
+				}
+				else {
+					profilePic.style.backgroundImage = `url(${reader.result})`;
+					localStorage.setItem("profilePic", reader.result);
+				}
+			})
+		});
+	}
+
+	static setUserDetails(name, title) {
+
+		// set the user name on load
+		let str = localStorage.getItem("userName");
+		if(str) {
+			name.value = str;
+		}
+
+		// set the user title on load
+		str = localStorage.getItem("userTitle");
+		if(str) {
+			title.value = str;
+		}
+		
+		name.addEventListener("keyup", function(e) {
+			localStorage.setItem("userName", name.value);
+		})
+
+		title.addEventListener("keyup", function() {
+			localStorage.setItem("userTitle", title.value);
+		})
+	}
 }
