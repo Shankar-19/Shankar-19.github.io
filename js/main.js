@@ -1,4 +1,5 @@
 import SideBar from "./sidebar.js";
+import Notepad from "./notepad.js";
 
 // sections
 const sidebar = document.getElementById("sidebar");
@@ -14,7 +15,10 @@ const userTitle = document.getElementById("user-title");
 
 // notepad buttons
 const notepadHeader = document.getElementById("notepad-header");
+const saveButton = document.getElementById("save");
 
 SideBar.toggle(sidebar, bar);
 SideBar.setImage(bgImage, profilePic, notepadHeader, imageUploader);
 SideBar.setUserDetails(userName, userTitle);
+
+Notepad.save(saveButton, textarea);

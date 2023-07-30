@@ -44,6 +44,7 @@
 #status-bar span {
 	font-size: 20px;
 	cursor: pointer;
+	color: #3A3845;;
 }
 
 /* Hide scrollbar for Chrome, Safari, Opera */
@@ -67,5 +68,9 @@ body, #textarea {
 
 	#textarea {
 		padding: 20px;
+	}
+
+	#status-bar {
+		gap: 20px;
 	}
 }
