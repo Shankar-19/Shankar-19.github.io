@@ -2,6 +2,7 @@ import SideBar from "./sidebar.js";
 
 // sections
 const sidebar = document.getElementById("sidebar");
+const textarea = document.getElementById("textarea")
 
 // sidebar buttons
 const bar = document.getElementById("bar");
@@ -11,6 +12,9 @@ const imageUploader = document.getElementById("image-uploader");
 const userName = document.getElementById("user-name");
 const userTitle = document.getElementById("user-title");
 
+// notepad buttons
+const notepadHeader = document.getElementById("notepad-header");
+
 SideBar.toggle(sidebar, bar);
-SideBar.setImage(bgImage, profilePic, imageUploader);
+SideBar.setImage(bgImage, profilePic, notepadHeader, imageUploader);
 SideBar.setUserDetails(userName, userTitle);

@@ -20,7 +20,7 @@ export default class SideBar {
 		});
 	}
 
-	static setImage(bgImage, profilePic, fileUpload) {
+	static setImage(bgImage, profilePic, notepadHeader, fileUpload) {
 
 		// set the background image on load
 		let str = localStorage.getItem("bgImage");
@@ -32,6 +32,12 @@ export default class SideBar {
 		str = localStorage.getItem("profilePic");
 		if(str) {
 			profilePic.style.backgroundImage = `url(${str})`;
+		}
+
+		// set the notepad background image on load
+		str = localStorage.getItem("notepadHeader");
+		if(str) {
+			notepadHeader.style.backgroundImage = `url(${str})`;
 		}
 
 		let image = "";
@@ -46,6 +52,11 @@ export default class SideBar {
 			image = "profile"
 		});
 
+		notepadHeader.addEventListener("click", function() {
+			fileUpload.click();
+			image = "notepad";
+		})
+
 		fileUpload.addEventListener("change", function() {
 			const reader = new FileReader();
 			reader.readAsDataURL(fileUpload.files[0]);
@@ -55,9 +66,13 @@ export default class SideBar {
 					bgImage.style.backgroundImage = `url(${reader.result})`;
 					localStorage.setItem("bgImage", reader.result);
 				}
-				else {
+				else if (image == "profile") {
 					profilePic.style.backgroundImage = `url(${reader.result})`;
 					localStorage.setItem("profilePic", reader.result);
+				}
+				else {
+					notepadHeader.style.backgroundImage = `url(${reader.result})`;
+					localStorage.setItem("notepadHeader", reader.result);
 				}
 			})
 		});
