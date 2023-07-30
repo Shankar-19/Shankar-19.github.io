@@ -1,5 +1,21 @@
 export default class Notepad {
 
+	static upload(uploadButton, fileUpload, textarea) {
+		uploadButton.addEventListener("click", function() {
+			fileUpload.click();
+		})
+
+		fileUpload.addEventListener("change", function() {
+			const reader = new FileReader();
+			reader.readAsText(fileUpload.files[0]);
+			reader.addEventListener("load", function() {
+				textarea.value = reader.result;
+				localStorage.setItem("notes", textarea.value);
+			});
+		})
+	}
+
+
 	static save(saveButton, textarea) {
 		textarea.addEventListener("keyup", function() {
 			let value = localStorage.getItem("notes");

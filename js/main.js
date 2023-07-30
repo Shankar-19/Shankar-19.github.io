@@ -16,9 +16,12 @@ const userTitle = document.getElementById("user-title");
 // notepad buttons
 const notepadHeader = document.getElementById("notepad-header");
 const saveButton = document.getElementById("save");
+const uploadButton = document.getElementById("upload");
+const fileUploader = document.getElementById("file-uploader")
 
 SideBar.toggle(sidebar, bar);
 SideBar.setImage(bgImage, profilePic, notepadHeader, imageUploader);
 SideBar.setUserDetails(userName, userTitle);
 
 Notepad.save(saveButton, textarea);
+Notepad.upload(uploadButton, fileUploader, textarea);
