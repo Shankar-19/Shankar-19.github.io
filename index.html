@@ -12,10 +12,12 @@
 <body>
 	<main>
 		<section id="sidebar" class="hide">
-			<div id="bg-image"></div>
+			<div id="cover-picture"></div>
+			<input type="file" accept="image/*" id="cover-pic-uploader" class="hide">
+			
 			<div id="user">
 				<div id="profile-picture"></div>
-				<input type="file" accept="image/*" id="image-uploader" class="hide">
+				<input type="file" accept="image/*" id="profile-pic-uploader" class="hide">
 				<input type="text" id="user-name" placeholder="Name" maxlength="25" spellcheck="false">
 				<input type="text" id="user-title" placeholder="Title" maxlength="40" spellcheck="false">
 			</div>
@@ -23,7 +25,8 @@
 
 		<section id="app">
 			<div id="notepad">
-				<div id="notepad-header"></div>
+				<div id="notepad-cover-pic"></div>
+				<input type="file" accept="image/*" id="notepadCoverPic-uploader" class="hide">
 				<div id="notepad-body">
 					<textarea id="textarea" placeholder="write down your ideas..."></textarea>
 					<div id="status-bar">

@@ -1,17 +1,25 @@
 export default class SideBar {
 
-	static toggle(sidebar, bar) {
+	constructor(sidebar, bar, userName, userTitle) {
+		this.sidebar = sidebar;
+		this.bar = bar;
+		this.userName = userName;
+		this.userTitle = userTitle;
+	}
+
+	toggle() {
+		let _this = this;
 
 		// check toggle state on load
 		let toggle = localStorage.getItem("sidebar");
 		if(toggle == "visible") {
-			sidebar.classList.remove("hide");
+			this.sidebar.classList.remove("hide");
 		}
 
-		bar.addEventListener("click", function() {
-			sidebar.classList.toggle("hide");
+		this.bar.addEventListener("click", function() {
+			_this.sidebar.classList.toggle("hide");
 			
-			if(sidebar.classList.contains("hide")) {
+			if(_this.sidebar.classList.contains("hide")) {
 				localStorage.setItem("sidebar", "hidden");
 			}
 			else {
@@ -20,84 +28,28 @@ export default class SideBar {
 		});
 	}
 
-	static setImage(bgImage, profilePic, notepadHeader, fileUpload) {
-
-		// set the background image on load
-		let str = localStorage.getItem("bgImage");
-		if(str) {
-			bgImage.style.backgroundImage = `url(${str})`;
+	setUserName() {
+		// set the user name on load
+		let name = localStorage.getItem("userName");
+		if(name) {
+			this.userName.value = name;
 		}
 
-		// set the profile picture on load
-		str = localStorage.getItem("profilePic");
-		if(str) {
-			profilePic.style.backgroundImage = `url(${str})`;
-		}
-
-		// set the notepad background image on load
-		str = localStorage.getItem("notepadHeader");
-		if(str) {
-			notepadHeader.style.backgroundImage = `url(${str})`;
-		}
-
-		let image = "";
-
-		bgImage.addEventListener("click", function() {
-			fileUpload.click();
-			image = "background"
+		this.userName.addEventListener("keyup", function(e) {
+			localStorage.setItem("userName", this.value);
 		})
-
-		profilePic.addEventListener("click", function() {
-			fileUpload.click();
-			image = "profile"
-		});
-
-		notepadHeader.addEventListener("click", function() {
-			fileUpload.click();
-			image = "notepad";
-		})
-
-		fileUpload.addEventListener("change", function() {
-			const reader = new FileReader();
-			reader.readAsDataURL(fileUpload.files[0]);
-
-			reader.addEventListener("load", function() {
-				if(image == "background") {
-					bgImage.style.backgroundImage = `url(${reader.result})`;
-					localStorage.setItem("bgImage", reader.result);
-				}
-				else if (image == "profile") {
-					profilePic.style.backgroundImage = `url(${reader.result})`;
-					localStorage.setItem("profilePic", reader.result);
-				}
-				else {
-					notepadHeader.style.backgroundImage = `url(${reader.result})`;
-					localStorage.setItem("notepadHeader", reader.result);
-				}
-			})
-		});
 	}
 
-	static setUserDetails(name, title) {
-
-		// set the user name on load
-		let str = localStorage.getItem("userName");
-		if(str) {
-			name.value = str;
-		}
-
+	setUserTitle() {
 		// set the user title on load
-		str = localStorage.getItem("userTitle");
-		if(str) {
-			title.value = str;
+		let title = localStorage.getItem("userTitle");
+		if(title) {
+			this.userTitle.value = title;
 		}
-		
-		name.addEventListener("keyup", function(e) {
-			localStorage.setItem("userName", name.value);
+
+		this.userTitle.addEventListener("keyup", function() {
+			localStorage.setItem("userTitle", this.value);
 		})
 
-		title.addEventListener("keyup", function() {
-			localStorage.setItem("userTitle", title.value);
-		})
 	}
 }
