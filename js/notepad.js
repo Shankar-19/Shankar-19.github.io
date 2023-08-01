@@ -1,11 +1,11 @@
 export default class Notepad {
 
-	constructor(textarea, emojiButton, upload, saveButton, settings, wordCount, charCount) {
+	constructor(textarea, emojiButton, upload, saveButton, settingsButton, wordCount, charCount) {
 		this.textarea = textarea;
 		this.emojiButton = emojiButton;
 		this.upload = upload;
 		this.saveButton = saveButton;
-		this.settings = settings;
+		this.settingsButton = settingsButton;
 		this.wordCount = wordCount;
 		this.charCount = charCount;
 	}
@@ -122,6 +122,77 @@ export default class Notepad {
 
 			// save character count
 			localStorage.setItem("charCount", _this.charCount.innerText);
+		});
+	}
+
+	toggleSettings(settingsPanel, xmark) {
+
+		let _this = this;
+
+		// hide settings panel
+		xmark.addEventListener("click", function() {
+			settingsPanel.classList.add("hide");
+			_this.settingsButton.style.fill = "#3A3845";
+		})
+
+		// toggle settings panel
+		this.settingsButton.addEventListener("click", function() {
+			settingsPanel.classList.toggle("hide");
+
+			if(settingsPanel.classList.contains("hide")) {
+				this.style.fill = "#3A3845";
+			}
+			else {
+				this.style.fill = "#0079FF";
+			}
+		})
+	}
+
+	setFont(fontButton) {
+
+		// set font family on load
+		let fontFamily = localStorage.getItem("fontFamily");
+		if(fontFamily) {
+			this.textarea.style.fontFamily = fontFamily;
+			fontButton.value = fontFamily;
+		}
+
+		let _this = this;
+		fontButton.addEventListener("change", function() {
+			_this.textarea.style.fontFamily = this.value;
+			localStorage.setItem("fontFamily", this.value);
+		});
+	}
+
+	setFontSize(sizeButton) {
+
+		// set font size on load
+		let fontSize = localStorage.getItem("fontSize");
+		if(fontSize) {
+			this.textarea.style.fontSize = fontSize + "px";
+			sizeButton.value = fontSize;
+		}
+
+		let _this = this;
+		sizeButton.addEventListener("change", function() {
+			_this.textarea.style.fontSize = this.value + "px";
+			localStorage.setItem("fontSize", this.value);
+		})
+	}
+
+	setAlignment(alignButton) {
+
+		// set text alignment on load
+		let textAlign = localStorage.getItem("textAlign");
+		if(textAlign) {
+			this.textarea.style.textAlign = textAlign;
+			alignButton.value = textAlign;
+		}
+
+		let _this = this;
+		alignButton.addEventListener("change", function() {
+			_this.textarea.style.textAlign = this.value;
+			localStorage.setItem("textAlign", this.value);
 		});
 	}
 

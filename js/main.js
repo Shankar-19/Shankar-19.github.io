@@ -18,14 +18,24 @@ const userTitle = document.getElementById("user-title");
 // notepad buttons
 const notepadCoverPic = document.getElementById("notepad-cover-pic");
 const notepadCoverPicUploader = document.getElementById("notepadCoverPic-uploader");
+
 const emojiButton = document.getElementById("emoji");
 const emojiSelector = document.getElementById("emoji-selector");
+
 const upload = document.getElementById("upload");
 const fileUploader = document.getElementById("file-uploader");
+
 const save = document.getElementById("save");
-const settings = document.getElementById("settings");
 const wordCount = document.getElementById("word-count");
 const charCount = document.getElementById("char-count");
+
+const settings = document.getElementById("settings");
+const settingsPanel = document.getElementById("settings-panel");
+const xmark = document.getElementById("settings-panel-xmark");
+const fontButton = document.getElementById("fonts");
+const sizeButton = document.getElementById("size");
+const alignmentButton = document.getElementById("alignment");
+
 
 // set image
 BackgroundImage.set(coverPic, coverPicUploader, "coverPic");
@@ -46,5 +56,11 @@ const notepad = new Notepad(textarea, emoji, upload, save, settings, wordCount, 
 notepad.emoji(emojiSelector);
 notepad.uploadFile(fileUploader);
 notepad.saveNotes();
+
+notepad.toggleSettings(settingsPanel, xmark);
+notepad.setFont(fontButton);
+notepad.setFontSize(sizeButton);
+notepad.setAlignment(alignmentButton);
+
 notepad.setWordCount();
 notepad.setCharCount();

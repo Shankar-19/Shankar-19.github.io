@@ -29,7 +29,7 @@
 				<input type="file" accept="image/*" id="notepadCoverPic-uploader" class="hide">
 				
 				<div id="notepad-body">
-					<textarea id="textarea" placeholder="write down your ideas..."></textarea>
+					<textarea id="textarea" spellcheck="false" placeholder="write down your ideas..."></textarea>
 					<div id="status-bar">
 						<svg id="emoji" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M612-516q25 0 42.5-17.5T672-576q0-25-17.5-42.5T612-636q-25 0-42.5 17.5T552-576q0 25 17.5 42.5T612-516Zm-264 0q25 0 42.5-17.5T408-576q0-25-17.5-42.5T348-636q-25 0-42.5 17.5T288-576q0 25 17.5 42.5T348-516Zm132 228q60 0 110.5-31t79.5-84H290q29 53 79.5 84T480-288Zm.276 192Q401-96 331-126q-70-30-122.5-82.5T126-330.958q-30-69.959-30-149.5Q96-560 126-629.5t82.5-122Q261-804 330.958-834q69.959-30 149.5-30Q560-864 629.5-834t122 82.5Q804-699 834-629.276q30 69.725 30 149Q864-401 834-331q-30 70-82.5 122.5T629.276-126q-69.725 30-149 30ZM480-480Zm0 312q130 0 221-91t91-221q0-130-91-221t-221-91q-130 0-221 91t-91 221q0 130 91 221t221 91Z"/></svg>
 
@@ -123,6 +123,45 @@
 	</main>
 
 	<svg id="bar" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+
+	<section id="settings-panel" class="hide">
+		<div id="settings-panel-header">
+			<svg id="settings-panel-xmark" width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+		</div>
+		<div id="settings-panel-body">
+			<p>Fonts</p>
+			<select id="fonts">
+				<option value="Arvo">Arvo</option>
+				<option value="Caveat">Caveat</option>
+				<option value="Comfortaa">Comfortaa</option>
+				<option value="Fira Sans">Fira Sans</option>
+				<option value="Inconsolata">Inconsolata</option>
+				<option value="Indie Flower">Indie Flower</option>
+				<option value="JetBrains Mono" selected>JetBrains Mono</option>
+				<option value="Montserrat">Montserrat</option>
+				<option value="Roboto">Roboto</option>
+				<option value="Roboto Slab">Roboto Slab</option>
+				<option value="Ubuntu">Ubuntu</option>
+			</select>
+
+			<p>Size</p>
+			<select id="size">
+				<option value="12">12</option>
+				<option value="14">14</option>
+				<option value="16" selected>16</option>
+				<option value="18">18</option>
+				<option value="24">24</option>
+			</select>
+
+			<p>Alignment</p>
+			<select id="alignment">
+				<option value="left">left</option>
+				<option value="center">center</option>
+				<option value="right">right</option>
+				<option value="justify">justify</option>
+			</select>
+		</div>
+	</section>
 
 </body>
 </html>
