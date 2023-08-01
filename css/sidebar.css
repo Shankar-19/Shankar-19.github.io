@@ -3,12 +3,14 @@
 	height: 100vh;
 	border-right: 2px solid #F1F1F1;
 	position: relative;
+	z-index: 1;
 }
 
 #bar {
 	position: absolute;
 	top: 15px;
 	left: 15px;
+	z-index: 2;
 }
 
 #cover-picture {

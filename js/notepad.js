@@ -1,8 +1,8 @@
 export default class Notepad {
 
-	constructor(textarea, emoji, upload, saveButton, settings, wordCount, charCount) {
+	constructor(textarea, emojiButton, upload, saveButton, settings, wordCount, charCount) {
 		this.textarea = textarea;
-		this.emoji = emoji;
+		this.emojiButton = emojiButton;
 		this.upload = upload;
 		this.saveButton = saveButton;
 		this.settings = settings;
@@ -28,6 +28,42 @@ export default class Notepad {
 	static totalChar(_this) {
 		// remove newlines
 		_this.charCount.innerText = _this.textarea.value.replace(/\n+/g, '').length;
+	}
+
+	emoji(emojiSelector) {
+
+		let _this = this;
+
+		// toggle emoji selector
+		this.emojiButton.addEventListener("click", function() {
+			emojiSelector.classList.toggle("hide");
+
+			if(emojiSelector.classList.contains("hide")) {
+				this.style.fill = "#3A3845";
+			}
+			else {
+				this.style.fill = "#0079FF";
+			}
+		})
+
+		emojiSelector.addEventListener("click", function(e) {
+			let target = e.target;
+			if(target.nodeName == "SPAN") {
+				let cursorPos = _this.textarea.selectionStart;
+				let str = _this.textarea.value;
+				_this.textarea.value = str.slice(0, cursorPos) + target.innerText + str.slice(cursorPos);
+
+				// update the cursor position
+				_this.textarea.selectionStart = cursorPos;
+
+				// update the word count and char count
+				Notepad.totalWords(_this);
+				Notepad.totalChar(_this);
+
+				// update the saveButton color
+				_this.saveButton.style.fill = "#0079FF";
+			}
+		})
 	}
 
 	uploadFile(fileUpload) {

@@ -18,7 +18,8 @@ const userTitle = document.getElementById("user-title");
 // notepad buttons
 const notepadCoverPic = document.getElementById("notepad-cover-pic");
 const notepadCoverPicUploader = document.getElementById("notepadCoverPic-uploader");
-const emoji = document.getElementById("emoji");
+const emojiButton = document.getElementById("emoji");
+const emojiSelector = document.getElementById("emoji-selector");
 const upload = document.getElementById("upload");
 const fileUploader = document.getElementById("file-uploader");
 const save = document.getElementById("save");
@@ -42,6 +43,7 @@ sidebar.setUserName();
 sidebar.setUserTitle();
 
 const notepad = new Notepad(textarea, emoji, upload, save, settings, wordCount, charCount);
+notepad.emoji(emojiSelector);
 notepad.uploadFile(fileUploader);
 notepad.saveNotes();
 notepad.setWordCount();

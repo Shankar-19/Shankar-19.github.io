@@ -17,6 +17,10 @@ svg {
 	fill: #3A3845;
 }
 
+span {
+	cursor: pointer;
+}
+
 .hide {
 	display: none;
 }
