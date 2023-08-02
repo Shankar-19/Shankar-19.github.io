@@ -4,6 +4,8 @@ import BackgroundImage from "./backgroundImage.js";
 
 // sections
 const sidebarSection = document.getElementById("sidebar");
+const tasksSection = document.getElementById("tasks");
+const notepadSection = document.getElementById("notepad");
 const textarea = document.getElementById("textarea")
 
 // sidebar buttons
@@ -14,6 +16,12 @@ const profilePic = document.getElementById("profile-picture");
 const profilePicUploader = document.getElementById("profile-pic-uploader");
 const userName = document.getElementById("user-name");
 const userTitle = document.getElementById("user-title");
+const tasksButton = document.getElementById("tasks-button");
+const notepadButton = document.getElementById("notepad-button");
+
+// tasks buttons
+const tasksCoverPic = document.getElementById("tasks-cover-pic");
+const tasksCoverPicUploader = document.getElementById("tasksCoverPic-uploader");
 
 // notepad buttons
 const notepadCoverPic = document.getElementById("notepad-cover-pic");
@@ -41,16 +49,20 @@ const alignmentButton = document.getElementById("alignment");
 BackgroundImage.set(coverPic, coverPicUploader, "coverPic");
 BackgroundImage.set(profilePic, profilePicUploader, "profilePic");
 BackgroundImage.set(notepadCoverPic, notepadCoverPicUploader, "notepadCoverPic");
+BackgroundImage.set(tasksCoverPic, tasksCoverPicUploader, "tasksCoverPic");
 
 // load image
 BackgroundImage.load(coverPic, "coverPic");
 BackgroundImage.load(profilePic, "profilePic");
 BackgroundImage.load(notepadCoverPic, "notepadCoverPic");
+BackgroundImage.load(tasksCoverPic, "tasksCoverPic");
 
-const sidebar = new SideBar(sidebarSection, bar, userName, userTitle);
+
+const sidebar = new SideBar(sidebarSection, bar, userName, userTitle, tasksButton, notepadButton);
 sidebar.toggle();
 sidebar.setUserName();
 sidebar.setUserTitle();
+sidebar.changeApp(tasksSection, notepadSection);
 
 const notepad = new Notepad(textarea, emoji, upload, save, settings, wordCount, charCount);
 notepad.emoji(emojiSelector);
