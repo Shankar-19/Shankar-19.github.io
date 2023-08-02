@@ -1,4 +1,5 @@
 import SideBar from "./sidebar.js";
+import Tasks from "./tasks.js";
 import Notepad from "./notepad.js";
 import BackgroundImage from "./backgroundImage.js";
 
@@ -22,6 +23,9 @@ const notepadButton = document.getElementById("notepad-button");
 // tasks buttons
 const tasksCoverPic = document.getElementById("tasks-cover-pic");
 const tasksCoverPicUploader = document.getElementById("tasksCoverPic-uploader");
+const tasksInput = document.getElementById("tasks-input");
+const tasksContainer = document.getElementById("tasks-container");
+const tasksImage = document.getElementById("tasks-image");
 
 // notepad buttons
 const notepadCoverPic = document.getElementById("notepad-cover-pic");
@@ -63,6 +67,10 @@ sidebar.toggle();
 sidebar.setUserName();
 sidebar.setUserTitle();
 sidebar.changeApp(tasksSection, notepadSection);
+
+const tasks = new Tasks(tasksInput, tasksContainer, tasksImage);
+tasks.loadTask();
+tasks.addTask();
 
 const notepad = new Notepad(textarea, emoji, upload, save, settings, wordCount, charCount);
 notepad.emoji(emojiSelector);

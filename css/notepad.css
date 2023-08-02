@@ -132,7 +132,7 @@
 }
 
 #settings-panel-xmark:hover {
-	fill: #7c3aed;
+	fill: #F94C66;
 }
 
 #settings-panel-body {
@@ -155,11 +155,6 @@
 	outline-color: #3A3845;
 	background-color: white;
 }
-
-#settings-panel-body select:active {
-	
-}
-
 
 /* Hide scrollbar for Chrome, Safari, Opera */
 body::-webkit-scrollbar,
