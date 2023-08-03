@@ -71,6 +71,7 @@ sidebar.changeApp(tasksSection, notepadSection);
 const tasks = new Tasks(tasksInput, tasksContainer, tasksImage);
 tasks.loadTask();
 tasks.addTask();
+tasks.deleteTask();
 
 const notepad = new Notepad(textarea, emoji, upload, save, settings, wordCount, charCount);
 notepad.emoji(emojiSelector);

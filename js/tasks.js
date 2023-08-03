@@ -9,8 +9,8 @@ export default class Tasks {
 	static toggleImage(_this) {
 		if(_this.tasksContainer.innerText != '')
 			_this.tasksImage.classList.add("hide");
-		else
-			_this.taskInput.classList.remove("hide");
+		else 
+			_this.tasksImage.classList.remove("hide");
 	}
 
 	loadTask() {
@@ -51,6 +51,36 @@ export default class Tasks {
 				Tasks.toggleImage(_this);
 
 				this.value = "";
+			}
+		})
+	}
+
+	deleteTask() {
+		let _this = this;
+		this.tasksContainer.addEventListener("click", function(e) {
+			let target = e.target;
+			let taskValue = '';
+
+			if(target.nodeName == "path") {
+				target.parentElement.parentElement.remove();
+				taskValue = target.parentElement.previousElementSibling.innerText;
+			}
+			else if(target.nodeName == "svg") {
+				target.parentElement.remove();
+				taskValue = target.previousElementSibling.innerText;
+			}
+
+			if(target.nodeName == "path" || target.nodeName == "svg") {
+				Tasks.toggleImage(_this);
+
+				let taskArr = JSON.parse(localStorage.getItem("tasks"));
+				for(let i = 0; i < taskArr.length; i++) {
+					if(taskArr[i].search(taskValue) != -1) {
+						taskArr.splice(i, 1);
+						localStorage.setItem("tasks", JSON.stringify(taskArr));
+						break;
+					}
+				}
 			}
 		})
 	}
